@@ -17,7 +17,7 @@ export class BlogService {
     })
     .then(response => {     
       this.posts.length = 0;
-      response['body'].forEach(post => {
+      response.forEach(post => {
         let copy = JSON.parse(JSON.stringify(post));
         this.posts.push(copy);
       });
