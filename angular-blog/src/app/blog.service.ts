@@ -11,14 +11,7 @@ export class BlogService {
     return fetch('/api/'+username,{
       method: "GET",
       credentials:'include'
-    }).then((response) => {
-      if(response.status==401){
-        Promise.reject(401);
-      }
-      if(response.status == 404){
-        Promise.reject(404);
-      }
-      response.json()}).catch((err)=>{console.log(err); Promise.reject()})
+    }).then(response => response.json()).catch((err)=>{console.log(err); Promise.reject(err)})
     .then(response => {     
       let posts:Post[] = []
       response.forEach(k => {
