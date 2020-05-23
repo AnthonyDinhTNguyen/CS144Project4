@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Post,BlogService} from '../blog.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  constructor() { }
+  blogService:BlogService = null;
+  posts: Post[] =[];
+  constructor(blogService:BlogService) {
+    this.blogService = blogService;
+  }
 
   ngOnInit(): void {
+    this.blogService.fetchPosts("cs144").then(results=>{this.posts = results});
   }
 
 }
