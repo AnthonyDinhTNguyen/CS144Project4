@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BlogService {
-  posts: Post[];
+  posts: Post[] = [];
   constructor() { }
 
   fetchPosts(username:string):Promise<void>{
