@@ -13,7 +13,7 @@ export class BlogService {
       credentials:'include'
     }).then((response:any)=>{response.json()}).then((response:any)=>{
       let posts: Post[] = []
-      for(let k in response){
+      response.forEach(k=>{
         posts.push({
           postid: k.postid,
           created: new Date(k.created),
@@ -21,7 +21,7 @@ export class BlogService {
           title: k.title,
           body: k.body
         })
-      }
+      })
       return posts;
     })
   }
