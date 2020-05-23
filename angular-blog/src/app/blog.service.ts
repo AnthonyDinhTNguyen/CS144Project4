@@ -11,7 +11,7 @@ export class BlogService {
     return fetch('/api/'+username,{
       method: "GET",
       credentials:'include'
-    }).then(response=>{response.json()}).then(response=>{
+    }).then((response:any)=>{response.json()}).then((response:any)=>{
       let posts: Post[] = []
       for(let k in response){
         posts.push({
