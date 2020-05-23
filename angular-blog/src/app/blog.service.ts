@@ -12,9 +12,6 @@ export class BlogService {
       method: "GET",
       credentials:'include'
     }).then(response => response.json())
-    .catch(() => {
-      //window.location.href = 'http://localhost:3000/login?redirect=/editor/';
-    })
     .then(response => {     
       let posts:Post[] = []
       response.forEach(k => {
