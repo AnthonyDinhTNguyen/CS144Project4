@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BlogService {
-  posts: Post[] = [];
+  //posts: Post[] = [];
   constructor() { }
 
-  fetchPosts(username:string):Promise<void>{
+  fetchPosts(username:string):Promise<Post[]>{
     return fetch('/api/'+username,{
       method: "GET",
       credentials:'include'
@@ -16,31 +16,37 @@ export class BlogService {
       //window.location.href = 'http://localhost:3000/login?redirect=/editor/';
     })
     .then(response => {     
-      this.posts.length = 0;
-      response.forEach(post => {
-        let copy = JSON.parse(JSON.stringify(post));
-        this.posts.push(copy);
+      let posts:Post[] = []
+      response.forEach(k => {
+        posts.push({
+          postid: k.postid,
+          created: new Date(k.created),
+          modified: new Date(k.modified),
+          title: k.title,
+          body: k.body
+        });
       });
+      return posts;
     });
   }
-  getPost():Post[]{
-    return this.posts;
-  }
+  // getPost():Post[]{
+  //   return this.posts;
+  // }
     
-    // .then((response:any)=>{response.json()}).then((response:any)=>{
-    //   let posts: Post[] = []
-    //   response.forEach(k=>{
-    //     posts.push({
-    //       postid: k.postid,
-    //       created: new Date(k.created),
-    //       modified: new Date(k.modified),
-    //       title: k.title,
-    //       body: k.body
-    //     })
-    //   })
-    //   return posts;
-    // })
-  //}
+  //   .then((response:any)=>{response.json()}).then((response:any)=>{
+  //     let posts: Post[] = []
+  //     response.forEach(k=>{
+  //       posts.push({
+  //         postid: k.postid,
+  //         created: new Date(k.created),
+  //         modified: new Date(k.modified),
+  //         title: k.title,
+  //         body: k.body
+  //       })
+  //     })
+  //     return posts;
+  //   })
+  // }
 }
 
 export class Post {
