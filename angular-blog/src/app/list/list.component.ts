@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blogService.fetchPosts("cs144").then(results=>{console.log(results); this.posts = results});
+    this.blogService.fetchPosts("cs144").then(()=>{this.posts = this.blogService.getPost();});
   }
 
 }
