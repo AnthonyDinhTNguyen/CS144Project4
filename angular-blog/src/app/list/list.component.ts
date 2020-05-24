@@ -22,9 +22,15 @@ export class ListComponent implements OnInit {
   postClicked(post:Post){
     let user = this.blogService.getUsername();
     this.blogService.fetchPosts(user).then((response)=>{
+      let postRef = null;
+      for(let i = 0 ; i< this.posts.length;i++){
+        if(this.posts[i].postid == post.postid){
+          postRef = this.posts[i];
+        }
+      }
       let id = post.postid;
       let url = '/edit/'+id;
-      this.blogService.setCurrentDraft(post);
+      this.blogService.setCurrentDraft(postRef);
       this.router.navigate([url]);
     });
   }
