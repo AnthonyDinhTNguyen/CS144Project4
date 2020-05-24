@@ -1,3 +1,8 @@
 #listComponent{
     width:30%;
 }
+#routerComponent{
+    width: 50%;
+    position: relative;
+    float: right;
+}
