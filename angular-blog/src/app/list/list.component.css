@@ -18,8 +18,9 @@ button:hover {
     background-color: rgb(181, 211, 209);
     margin: 1em;
     padding: 1em;
-    border-width: 1px;
-    border-color: rgb(181, 211, 209)
+    outline-width: 1px;
+    outline-style: auto;
+    outline-color: rgb(181, 211, 209)
 }
 #postCreation{
     background-color:  rgb(152, 177, 175);
@@ -29,5 +30,6 @@ button:hover {
     font-size: 15px;
 }
 #listElement:hover{
-    border-color: red;
+    outline-color: red;
+    background-color: red;
 }
