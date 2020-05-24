@@ -32,7 +32,10 @@ export class EditComponent implements OnInit {
     }
     else{
       //Error CHeck id for nan
-      this.post = this.blogService.getCurrentDraft();
+      let temp= this.blogService.getCurrentDraft();
+      if (temp != null){
+        this.post = temp;
+      }
       if(this.post == null||this.post.postid!= id){
         this.blogService.getPost(user, id).then(result => this.post = result);
       }
