@@ -27,7 +27,6 @@ export class PreviewComponent implements OnInit {
   ngOnInit(): void {
     let temp = this.activatedRoute.snapshot.paramMap.get('id');
     let id:number = parseInt(temp);
-
     let user = this.blogService.getUsername();
     if(user == null){
       //logout
@@ -40,6 +39,7 @@ export class PreviewComponent implements OnInit {
       }
       if(this.post == null||this.post.postid!= id){
         this.blogService.getPost(user, id).then(result => {
+          this.post = result
           if(this.post == null){
             console.log("error on preview");
           }
@@ -47,7 +47,7 @@ export class PreviewComponent implements OnInit {
             this.titleMarkdown = this.writer.render(this.reader.parse(this.post.title));
             this.bodyMarkdown = this.writer.render(this.reader.parse(this.post.body));
           }
-          this.post = result});
+          });
       }
     }
   }
