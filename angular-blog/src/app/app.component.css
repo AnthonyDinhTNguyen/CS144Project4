@@ -7,6 +7,7 @@
     outline-color: grey;
     outline-style: auto;
     float:left;
+    margin-right: 10%;
 
 }
 #routerComponent{
