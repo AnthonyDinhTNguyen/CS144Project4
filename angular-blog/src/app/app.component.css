@@ -16,9 +16,9 @@
 #routerComponent{
     width: 30%;
     display:block;
-    flex:1;
+    flex:0 0 30%;
     outline-width:1px;
-    outline-color: grey;
+    outline-color: white;
     outline-style: auto;
     padding-left: 1%;
 }
