@@ -15,21 +15,40 @@ export class PreviewComponent implements OnInit {
   writer;
   titleMarkdown="";
   bodyMarkdown="";
-  constructor(blogService:BlogService,router:Router) { 
+  activatedRoute:ActivatedRoute;
+  constructor(blogService:BlogService,router:Router,activatedRoute:ActivatedRoute) { 
     this.blogService= blogService;
     this.router= router;
+    this.activatedRoute = activatedRoute;
     this.reader = new Parser;
     this.writer = new HtmlRenderer;
   }
 
   ngOnInit(): void {
-    this.post = this.blogService.getCurrentDraft();
-    if(this.post == null){
-      console.log("error on preview");
+    let temp = this.activatedRoute.snapshot.paramMap.get('id');
+    let id:number = parseInt(temp);
+
+    let user = this.blogService.getUsername();
+    if(user == null){
+      //logout
     }
     else{
-      this.titleMarkdown = this.writer.render(this.reader.parse(this.post.title));
-      this.bodyMarkdown = this.writer.render(this.reader.parse(this.post.body));
+      //Error CHeck id for nan
+      let temp= this.blogService.getCurrentDraft();
+      if (temp != null){
+        this.post = temp;
+      }
+      if(this.post == null||this.post.postid!= id){
+        this.blogService.getPost(user, id).then(result => {
+          if(this.post == null){
+            console.log("error on preview");
+          }
+          else{
+            this.titleMarkdown = this.writer.render(this.reader.parse(this.post.title));
+            this.bodyMarkdown = this.writer.render(this.reader.parse(this.post.body));
+          }
+          this.post = result});
+      }
     }
   }
   editListener(){

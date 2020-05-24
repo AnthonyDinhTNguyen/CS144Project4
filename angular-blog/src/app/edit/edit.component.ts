@@ -64,6 +64,7 @@ export class EditComponent implements OnInit {
     let user = this.blogService.getUsername();
     this.blogService.getPost(user,this.post.postid).then((response)=>{
       if(response == null){
+        this.blogService.fetchPosts(user);
         this.router.navigate(['/']);
       }
       else{
