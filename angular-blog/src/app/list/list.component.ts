@@ -49,6 +49,6 @@ export class ListComponent implements OnInit {
       this.blogService.addToLocal(newPost);
       let url = '/edit/'+newID;
       this.router.navigate([url]);
-    });
+    }).catch((err)=>{console.log("can't fetch")});
   }
 }

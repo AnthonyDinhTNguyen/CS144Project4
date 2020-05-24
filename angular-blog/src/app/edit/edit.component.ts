@@ -64,4 +64,10 @@ export class EditComponent implements OnInit {
       }
     })
   }
+  previewListener(){
+    let id = this.post.postid;
+    let url = "/preview/"+id.toString();
+    this.blogService.setCurrentDraft(this.post);
+    this.router.navigate([url]);
+  }
 }
