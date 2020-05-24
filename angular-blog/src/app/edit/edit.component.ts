@@ -23,8 +23,8 @@ export class EditComponent implements OnInit {
     this.initializePost();
   }
   initializePost(){
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    id = parseInt(id);
+    let temp = this.activatedRoute.snapshot.paramMap.get('id');
+    let id:number = parseInt(temp);
     //let id = 1;
     let user = this.blogService.getUsername();
     if(user == null){
