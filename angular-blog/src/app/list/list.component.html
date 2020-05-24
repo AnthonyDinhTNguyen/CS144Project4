@@ -1,9 +1,9 @@
 <p>Posts</p>
 <button (click) = "createNewPost()">New Post</button>
-<div id = "list">
+<div>
   <ul>
     <li *ngFor="let post of posts" (click)="postClicked(post)">
-        <span>{{post.created}}</span> {{post.title}}
+        <div id ="listElement"><div id = "postCreation">{{post.created}}</div><span id = "postTitle">{{post.title}}</span></div>
     </li>
   </ul>
 </div>
