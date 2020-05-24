@@ -18,8 +18,8 @@ export class PreviewComponent implements OnInit {
   constructor(blogService:BlogService,router:Router) { 
     this.blogService= blogService;
     this.router= router;
-    this.reader = Parser;
-    this.writer = HtmlRenderer;
+    this.reader = new Parser;
+    this.writer = new HtmlRenderer;
   }
 
   ngOnInit(): void {
