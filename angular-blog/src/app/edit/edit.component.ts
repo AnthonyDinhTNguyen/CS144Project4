@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
       if(response == null){
         this.blogService.newPost(user,this.post).then(()=>{
           for(let i =0;i<this.blogService.posts.length;i++){
-            if(this.blogService.posts[i].postid = this.post.postid){
+            if(this.blogService.posts[i].postid == this.post.postid){
               this.post = this.blogService.posts[i];
             }
           }
@@ -56,7 +56,7 @@ export class EditComponent implements OnInit {
       else{
         this.blogService.updatePost(user,this.post).then(()=>{
           for(let i =0;i<this.blogService.posts.length;i++){
-            if(this.blogService.posts[i].postid = this.post.postid){
+            if(this.blogService.posts[i].postid == this.post.postid){
               this.post = this.blogService.posts[i];
             }
           }
