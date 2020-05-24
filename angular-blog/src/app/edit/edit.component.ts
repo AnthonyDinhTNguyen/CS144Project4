@@ -8,13 +8,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  post: Post ={
-    title:"",
-    body:"",
-    created: new Date(Date.now()),
-    postid: -1,
-    modified: new Date(Date.now())
-  };
+  post: Post;
   blogService: BlogService;
   router: Router;
   activatedRoute: ActivatedRoute;
