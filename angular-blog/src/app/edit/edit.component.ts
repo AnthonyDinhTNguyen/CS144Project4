@@ -16,6 +16,13 @@ export class EditComponent implements OnInit {
     this.blogService = blogService;
     this.router = router;
     this.activatedRoute = activatedRoute;
+    this.post = {
+      title:"",
+      body:"",
+      created: new Date(Date.now()),
+      postid: -1,
+      modified: new Date(Date.now())
+    }
   }
 
   ngOnInit(): void {
