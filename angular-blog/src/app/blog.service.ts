@@ -59,6 +59,9 @@ export class BlogService {
   getCurrentDraft(){
     return this.draft;
   }
+  newPost(){
+    
+  }
 }
 function parseJWT(token) //got this from the spec
 {

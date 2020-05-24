@@ -23,9 +23,9 @@ export class EditComponent implements OnInit {
     this.initializePost();
   }
   initializePost(){
-    //let id = this.activatedRoute.snapshot.paramMap.get('id');
-    //id = parseInt(id);
-    let id = 1;
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    id = parseInt(id);
+    //let id = 1;
     let user = this.blogService.getUsername();
     if(user == null){
       //logout
@@ -37,5 +37,9 @@ export class EditComponent implements OnInit {
         this.blogService.getPost(user, id).then(result => this.post = result);
       }
     }
+  }
+  saveListener(){
+    let user = this.blogService.getUsername();
+    //this.blogService.newPost(user,this.post);
   }
 }
