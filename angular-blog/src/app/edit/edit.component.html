@@ -1,6 +1,7 @@
 <h1>Title:</h1>
 <input type = "text" name = "title" [(ngModel)] = "post.title">
 <br>
+<h2>Body:</h2>
 <textarea name= "body" [(ngModel)] = "post.body"></textarea>
 <button (click) = "saveListener()">Save</button>
 <button (click) = "deleteListener()">Delete</button>

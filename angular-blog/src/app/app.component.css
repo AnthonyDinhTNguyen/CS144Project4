@@ -1,6 +1,6 @@
 #listComponent{
     width:30%;
-    display: inline-block;
+    display: block;
     border-width: 1px;
     border-color: grey;
     outline-width: 1px;
@@ -10,7 +10,6 @@
 }
 #routerComponent{
     width: 50%;
-    position: relative;
-    display:inline-block;
+    display:block;
     margin-top: 1%;
 }
