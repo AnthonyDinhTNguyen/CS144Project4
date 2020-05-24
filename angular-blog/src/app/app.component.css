@@ -3,7 +3,10 @@
     display: inline-block;
     border-width: 1px;
     border-color: grey;
-    background-color: grey;
+    outline-width: 1px;
+    outline-color: grey;
+    outline-style: auto;
+
 }
 #routerComponent{
     width: 50%;
