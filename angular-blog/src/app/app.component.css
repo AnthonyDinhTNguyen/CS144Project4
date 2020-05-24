@@ -1,3 +1,6 @@
+#wrapper{
+    display:flex;
+}
 #listComponent{
     width:30%;
     display: block;
@@ -6,12 +9,13 @@
     outline-width: 1px;
     outline-color: grey;
     outline-style: auto;
-    float:left;
     margin-right: 10%;
+    flex: 0 0 65%;
 
 }
 #routerComponent{
     width: 50%;
     display:block;
     margin-top: 1%;
+    flex:1;
 }
