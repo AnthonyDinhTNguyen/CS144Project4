@@ -1,7 +1,7 @@
 <label>Title:</label>
 <input type = "text" name = "title" [(ngModel)] = "post.title">
 <br>
-<lable>Body:</lable>
+<label>Body:</label>
 <textarea name= "body" [(ngModel)] = "post.body"></textarea>
 <h3>Last Modified:{{post.modified}}</h3>
 <button (click) = "saveListener()">Save</button>
