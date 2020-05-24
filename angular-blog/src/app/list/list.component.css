@@ -1,5 +1,5 @@
 button{
-    background-color: rgb(74, 147, 243); /* Green */
+    background-color: rgb(120, 153, 197); /* Green */
     border: none;
     color: white;
     text-align: center;
@@ -10,6 +10,12 @@ button{
     border-radius: 12px;
 }
 button:hover {
-    background-color: rgb(74, 190, 243);; /* Green */
+    background-color: rgb(124, 183, 211);; /* Green */
     color: white;
-  }
+}
+
+ul{
+    background-color: grey;
+    margin: 2px;
+    padding: 1px;
+}
