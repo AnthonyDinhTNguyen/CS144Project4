@@ -49,6 +49,15 @@ export class PreviewComponent implements OnInit {
             }
           });
       }
+      else{
+        if(this.post == null){
+          console.log("error on preview");
+        }
+        else{
+          this.titleMarkdown = this.writer.render(this.reader.parse(this.post.title));
+          this.bodyMarkdown = this.writer.render(this.reader.parse(this.post.body));
+        }
+      }
     }
   }
   editListener(){
