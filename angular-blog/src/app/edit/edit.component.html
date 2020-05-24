@@ -4,7 +4,7 @@
 <br>
 <label>Body:</label>
 <textarea name= "body" [(ngModel)] = "post.body" placeholder="Enter Body"></textarea>
-<h3>Last Modified:{{post.modified}}</h3>
+<h3>Last Modified:</h3><span [innerHTML] = "post.modified"></span>
 </div>
 <button (click) = "saveListener()">Save</button>
 <button (click) = "deleteListener()">Delete</button>
