@@ -69,7 +69,7 @@ export class BlogService {
   getCurrentDraft(){
     return this.draft;
   }
-  
+
   newPost(username:string, post: Post){
     let id = post.postid;
     let bod = JSON.stringify({title:post.title,body:post.body});
@@ -106,6 +106,14 @@ export class BlogService {
   addToLocal(post:Post){
     this.posts.push(post);
     this.posts.sort(comparator);
+  }
+  deletePost(username:string,postid:number){
+    fetch('/api/'+username+'/'+postid.toString(),{
+      method:"DELETE",
+      credentials:'include',
+    }).then(response=>{
+      this.fetchPosts(username);
+    }).catch((err)=>{console.log("error deleteing psot")});
   }
 }
 function comparator(a,b){

@@ -49,4 +49,15 @@ export class EditComponent implements OnInit {
       }
     });
   }
+  deleteListener(){
+    let user = this.blogService.getUsername();
+    this.blogService.getPost(user,this.post.postid).then((response)=>{
+      if(response == null){
+
+      }
+      else{
+        this.blogService.deletePost(user,this.post.postid);
+      }
+    })
+  }
 }
