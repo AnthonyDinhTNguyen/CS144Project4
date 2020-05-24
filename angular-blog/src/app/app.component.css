@@ -9,13 +9,15 @@
     outline-width: 1px;
     outline-color: grey;
     outline-style: auto;
-    margin-right: 10%;
+    margin-right: 5%;
     flex: 0 0 30%;
 
 }
 #routerComponent{
     width: 50%;
     display:block;
-    margin-top: 1%;
     flex:1;
+    outline-width:1px;
+    outline-color: grey;
+    outline-style: auto;
 }
