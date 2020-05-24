@@ -21,18 +21,27 @@ export class ListComponent implements OnInit {
   }
   postClicked(post:Post){
     let user = this.blogService.getUsername();
-    this.blogService.fetchPosts(user).then((response)=>{
-      let postRef = null;
-      for(let i = 0 ; i< this.posts.length;i++){
-        if(this.posts[i].postid == post.postid){
-          postRef = this.posts[i];
-        }
+    let curDraft = this.blogService.getCurrentDraft();
+    let cont = true;
+    if(curDraft!= null){
+      if(curDraft.postid == post.postid){
+        cont = false;
       }
-      let id = post.postid;
-      let url = '/edit/'+id;
-      this.blogService.setCurrentDraft(postRef);
-      this.router.navigate([url]);
-    });
+    }
+    if(cont == true){
+      this.blogService.fetchPosts(user).then((response)=>{
+        let postRef = null;
+        for(let i = 0 ; i< this.posts.length;i++){
+          if(this.posts[i].postid == post.postid){
+            postRef = this.posts[i];
+          }
+        }
+        let id = post.postid;
+        let url = '/edit/'+id;
+        this.blogService.setCurrentDraft(postRef);
+        this.router.navigate([url]);
+      });
+    }
   }
   createNewPost(){
     let user = this.blogService.getUsername();
