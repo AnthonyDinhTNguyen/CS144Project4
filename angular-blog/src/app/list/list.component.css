@@ -31,5 +31,5 @@ button:hover {
 }
 #listElement:hover{
     outline-color: red;
-    background-color: red;
+    background-color:rgb(209, 245, 242);
 }

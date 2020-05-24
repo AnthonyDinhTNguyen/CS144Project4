@@ -3,7 +3,7 @@
     display: inline-block;
     border-width: 1px;
     border-color: grey;
-    background-color: rgb(203, 236, 247)
+    background-color: grey;
 }
 #routerComponent{
     width: 50%;
