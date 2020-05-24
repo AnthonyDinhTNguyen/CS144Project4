@@ -20,10 +20,13 @@ export class ListComponent implements OnInit {
     this.blogService.subscribe(()=>{this.posts = this.blogService.posts});
   }
   postClicked(post:Post){
-    let id = post.postid;
-    let url = '/edit/'+id;
-    this.blogService.setCurrentDraft(post);
-    this.router.navigate([url]);
+    let user = this.blogService.getUsername();
+    this.blogService.fetchPosts(user).then((response)=>{
+      let id = post.postid;
+      let url = '/edit/'+id;
+      this.blogService.setCurrentDraft(post);
+      this.router.navigate([url]);
+    });
   }
   createNewPost(){
     let user = this.blogService.getUsername();
