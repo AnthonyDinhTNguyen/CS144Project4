@@ -1,6 +1,9 @@
 #listComponent{
     width:30%;
     display: inline-block;
+    border-width: 1px;
+    border-color: grey;
+    background-color: rgb(203, 236, 247)
 }
 #routerComponent{
     width: 50%;

@@ -18,7 +18,7 @@ button:hover {
     background-color: rgb(181, 211, 209);
     margin: 1em;
     padding: 1em;
-    border-radius: 1px;
+    border-width: 1px;
     border-color: rgb(181, 211, 209)
 }
 #postCreation{
