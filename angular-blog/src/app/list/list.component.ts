@@ -50,8 +50,8 @@ export class ListComponent implements OnInit {
       let newPost: Post = {
         title: "",
         body: "",
-        created: new Date(0),
-        modified: new Date(0),
+        created: new Date(),
+        modified: new Date(),
         postid: newID
       }
       this.blogService.setCurrentDraft(newPost);
