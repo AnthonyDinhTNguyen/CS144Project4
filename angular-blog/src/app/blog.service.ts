@@ -46,7 +46,7 @@ export class BlogService {
       return username;
     }
   }
-  getPost(username:string, id:number):Promise<Post>{
+  getPost(username:string, id:number){
     return fetch('/api/'+username+"/"+id.toString(),{
       method:"GET",
       credentials:'include'
@@ -59,6 +59,8 @@ export class BlogService {
         body: response.body
       }
       return post;
+    }).catch((err)=>{
+      return null;
     })
   }
   setCurrentDraft(draft:Post){

@@ -40,6 +40,13 @@ export class EditComponent implements OnInit {
   }
   saveListener(){
     let user = this.blogService.getUsername();
-    this.blogService.newPost(user,this.post);
+    this.blogService.getPost(user,this.post.postid).then((response)=>{
+      if(response == null){
+        this.blogService.newPost(user,this.post);
+      }
+      else{
+        
+      }
+    });
   }
 }
