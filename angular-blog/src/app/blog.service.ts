@@ -13,9 +13,9 @@ export class BlogService {
       method: "GET",
       credentials:'include'
     }).then(response => response.json()).catch((err)=>{console.log(err); Promise.reject(err)})
-    .then(response => {     
+    .then(response => {
+      this.posts = [];     
       response.forEach(k => {
-        this.posts = [];
         this.posts.push({
           postid: k.postid,
           created: new Date(k.created),
