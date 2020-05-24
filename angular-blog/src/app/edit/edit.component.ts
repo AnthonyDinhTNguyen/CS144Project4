@@ -45,10 +45,22 @@ export class EditComponent implements OnInit {
     let user = this.blogService.getUsername();
     this.blogService.getPost(user,this.post.postid).then((response)=>{
       if(response == null){
-        this.blogService.newPost(user,this.post);
+        this.blogService.newPost(user,this.post).then(()=>{
+          for(let i =0;i<this.blogService.posts.length;i++){
+            if(this.blogService.posts[i].postid = this.post.postid){
+              this.post = this.blogService.posts[i];
+            }
+          }
+        });
       }
       else{
-        this.blogService.updatePost(user,this.post);
+        this.blogService.updatePost(user,this.post).then(()=>{
+          for(let i =0;i<this.blogService.posts.length;i++){
+            if(this.blogService.posts[i].postid = this.post.postid){
+              this.post = this.blogService.posts[i];
+            }
+          }
+        });
       }
     });
   }

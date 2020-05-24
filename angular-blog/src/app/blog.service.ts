@@ -70,10 +70,10 @@ export class BlogService {
     return this.draft;
   }
 
-  newPost(username:string, post: Post){
+  newPost(username:string, post: Post):Promise<void>{
     let id = post.postid;
     let bod = JSON.stringify({title:post.title,body:post.body});
-    fetch('/api/'+username+'/'+id.toString(),{
+    return fetch('/api/'+username+'/'+id.toString(),{
       method:"POST",
       credentials:'include',
       headers:{
@@ -85,10 +85,10 @@ export class BlogService {
     }).catch((err)=>{console.log("error with new post")});//error handler todo
   }
 
-  updatePost(username:string,post:Post){
+  updatePost(username:string,post:Post):Promise<void>{
     let id = post.postid;
     let bod = JSON.stringify({title:post.title,body:post.body});
-    fetch('/api/'+username+'/'+id.toString(),{
+    return fetch('/api/'+username+'/'+id.toString(),{
       method:"PUT",
       credentials: 'include',
       headers:{
