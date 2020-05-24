@@ -7,7 +7,10 @@ export class BlogService {
   posts: Post[] = [];
   draft: Post = null;
   constructor() { }
-
+  listeners = [];
+  subscribe(func){
+    this.listeners.push(func)
+  }
   fetchPosts(username:string):Promise<Post[]>{
     return fetch('/api/'+username,{
       method: "GET",
@@ -24,6 +27,11 @@ export class BlogService {
           body: k.body
         });
       });
+      this.posts.sort(comparator);
+      for(let i = 0; i<this.listeners.length; i++){
+        let func = this.listeners[i];
+        func();
+      }
       return this.posts;
     });
   }
@@ -60,8 +68,40 @@ export class BlogService {
     return this.draft;
   }
   newPost(username:string, post: Post){
-    
+    let id = post.postid;
+    let bod = JSON.stringify({title:post.title,body:post.body});
+    fetch('/api/'+username+'/'+id.toString(),{
+      method:"POST",
+      credentials:'include',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: bod
+    }).then(response=>{
+      if(response.status!= 201){
+        return "error";
+      }
+      else{
+        this.fetchPosts(username);
+      }
+    })
   }
+  getNextPostID(){
+    return this.posts[this.posts.length-1].postid+1;
+  }
+  addToLocal(post:Post){
+    this.posts.push(post);
+    this.posts.sort(comparator);
+  }
+}
+function comparator(a,b){
+  if(a.postid<b.postid){
+    return -1;
+  }
+  if(a.postid>b.postid){
+    return 1;
+  }
+  return 0;
 }
 function parseJWT(token) //got this from the spec
 {

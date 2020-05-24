@@ -17,11 +17,29 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogService.fetchPosts("cs144").then((results)=>{this.posts = results});
+    this.blogService.subscribe(()=>{this.posts = this.blogService.posts});
   }
   postClicked(post:Post){
     let id = post.postid;
     let url = '/edit/'+id;
     this.blogService.setCurrentDraft(post);
     this.router.navigate([url]);
+  }
+  createNewPost(){
+    let user = this.blogService.getUsername();
+    this.blogService.fetchPosts(user).then((response)=>{
+      let newID = this.blogService.getNextPostID();
+      let newPost: Post = {
+        title: "",
+        body: "",
+        created: new Date(Date.now()),
+        modified: new Date(Date.now()),
+        postid: newID
+      }
+      this.blogService.setCurrentDraft(newPost);
+      this.blogService.addToLocal(newPost);
+      let url = '/edit/'+newID;
+      this.router.navigate([url]);
+    });
   }
 }

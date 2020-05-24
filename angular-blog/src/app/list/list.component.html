@@ -1,4 +1,5 @@
 <p>Title List</p>
+<button (click) = "createNewPost()">New Post</button>
 <ul>
   <li *ngFor="let post of posts" (click)="postClicked(post)">
 	  	<span>{{post.created}}</span> {{post.title}}
