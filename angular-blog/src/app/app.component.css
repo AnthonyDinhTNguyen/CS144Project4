@@ -14,10 +14,11 @@
 
 }
 #routerComponent{
-    width: 50%;
+    width: 30%;
     display:block;
     flex:1;
     outline-width:1px;
     outline-color: grey;
     outline-style: auto;
+    padding-left: 1%;
 }
