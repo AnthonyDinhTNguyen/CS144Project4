@@ -45,7 +45,7 @@ export class EditComponent implements OnInit {
         this.blogService.newPost(user,this.post);
       }
       else{
-        
+        this.blogService.updatePost(user,this.post);
       }
     });
   }

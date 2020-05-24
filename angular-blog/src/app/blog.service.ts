@@ -69,6 +69,7 @@ export class BlogService {
   getCurrentDraft(){
     return this.draft;
   }
+  
   newPost(username:string, post: Post){
     let id = post.postid;
     let bod = JSON.stringify({title:post.title,body:post.body});
@@ -80,14 +81,25 @@ export class BlogService {
       },
       body: bod
     }).then(response=>{
-      if(response.status!= 201){
-        return "error";
-      }
-      else{
-        this.fetchPosts(username);
-      }
-    })
+      this.fetchPosts(username);
+    }).catch((err)=>{console.log("error with new post")});//error handler todo
   }
+
+  updatePost(username:string,post:Post){
+    let id = post.postid;
+    let bod = JSON.stringify({title:post.title,body:post.body});
+    fetch('/api/'+username+'/'+id.toString(),{
+      method:"PUT",
+      credentials: 'include',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:bod
+    }).then(response=>{
+      this.fetchPosts(username);
+    }).catch((err)=>{console.log("error updating post")});
+  }
+
   getNextPostID(){
     return this.posts[this.posts.length-1].postid+1;
   }
