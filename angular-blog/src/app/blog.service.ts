@@ -59,7 +59,7 @@ export class BlogService {
   getCurrentDraft(){
     return this.draft;
   }
-  newPost(){
+  newPost(username:string, post: Post){
     
   }
 }
