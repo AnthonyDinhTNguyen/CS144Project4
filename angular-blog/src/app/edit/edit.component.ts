@@ -46,11 +46,9 @@ export class EditComponent implements OnInit {
     this.blogService.getPost(user,this.post.postid).then((response)=>{
       if(response == null){
         this.blogService.newPost(user,this.post).then(()=>{
-          for(let i =0;i<this.blogService.posts.length;i++){
-            if(this.blogService.posts[i].postid == this.post.postid){
-              this.post = this.blogService.posts[i];
-            }
-          }
+          this.blogService.getPost(user,this.post.postid).then((result)=>{
+            this.post = result;
+          })
         });
       }
       else{
