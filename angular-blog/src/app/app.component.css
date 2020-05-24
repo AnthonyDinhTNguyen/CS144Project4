@@ -1,10 +1,10 @@
 #listComponent{
     width:30%;
-    display: flex;
+    display: inline-block;
 }
 #routerComponent{
     width: 50%;
     position: relative;
     float: right;
-    display:flex;
+    display:inline-block;
 }
